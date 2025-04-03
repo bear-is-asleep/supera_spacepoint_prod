@@ -1,0 +1,10 @@
+*.root
+*.log
+*.err
+*.out
+*.txt
+*.bak
+triplet
+test_triplet
+doublet
+*.db

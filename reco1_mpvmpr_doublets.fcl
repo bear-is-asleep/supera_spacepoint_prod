@@ -1,0 +1,34 @@
+#include "reco1_mpvmpr.fcl"
+
+outputs.out1.outputCommands: [
+  "keep *"
+]
+
+#Use correct channel map
+services.ChannelStatusService:      @local::sbnd_data_channelstatus
+
+#Hit config
+# physics.producers.gaushit.HitFinderToolVec.CandidateHitsPlane0:              @local::candhitfinder_standard
+# physics.producers.gaushit.HitFinderToolVec.CandidateHitsPlane0.Plane:        0
+# physics.producers.gaushit.HitFinderToolVec.CandidateHitsPlane0.RoiThreshold: 10.
+# physics.producers.gaushit.HitFinderToolVec.CandidateHitsPlane1:              @local::candhitfinder_standard
+# physics.producers.gaushit.HitFinderToolVec.CandidateHitsPlane1.Plane:        1
+# physics.producers.gaushit.HitFinderToolVec.CandidateHitsPlane1.RoiThreshold: 10.
+# physics.producers.gaushit.HitFinderToolVec.CandidateHitsPlane2:              @local::candhitfinder_standard
+# physics.producers.gaushit.HitFinderToolVec.CandidateHitsPlane2.Plane:        2
+# physics.producers.gaushit.HitFinderToolVec.CandidateHitsPlane2.RoiThreshold: 10.
+
+# physics.producers.gaushit.MaxMultiHit:                                       5
+# physics.producers.gaushit.TryNplus1Fits:                                     false
+# physics.producers.gaushit.PeakFitter.MinWidth:                               1
+# physics.producers.gaushit.PeakFitter.FloatBaseline:                          false
+# physics.producers.gaushit.PeakFitter.tool_type:                              "PeakFitterMrqdt"
+
+#Keep doublets
+physics.producers.cluster3d.ClusterPathAlg.SaveMythicalPoints: true
+physics.producers.cluster3d.Hit3DBuilderAlg.SaveMythicalPoints: true
+
+#Update the params for the supera module
+#physics.analyzers.supera.supera_params: "supera_sbnd_mpvmpr_ghostcfg.fcl"
+#physics.analyzers.superampvmpr.supera_params: "supera_sbnd_mpvmpr_ghostcfg.fcl"
+
